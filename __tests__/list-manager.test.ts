@@ -13,7 +13,8 @@ jest.mock("../src/utils/debounce.ts", () => ({
 }));
 
 import $ from "jquery";
-
+(global as any).$ = $;
+(global as any).jQuery = $;
 
 import { ListManager } from "../src/managers/list-manager";
 import { StorageService } from "../src/services/storage-service";
@@ -70,8 +71,5 @@ describe("ListManager (essential tests)", () => {
     $container.find("#remove-button").trigger("click");
 
     expect($container.find("li").length).toBe(0);
-
-
   });
-
 });
